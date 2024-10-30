@@ -146,13 +146,13 @@
 </main>
 
 <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
-    <div class="grid grid-cols-2 gap-12 mt-10 lg:mt-16 lg:gap-12 lg:grid-cols-4">
+    <div class="grid grid-cols-2 gap-8 mt-10 lg:mt-16 lg:gap-12 lg:grid-cols-4">
         <?php
         if (mysqli_num_rows($select_products) > 0) {
             while ($fetch_product = mysqli_fetch_assoc($select_products)) {
                 ?>
                 <form method="POST">
-                    <div class="relative group">
+                    <div class="relative group shadow-lg p-2 rounded-md">
                         <div class="overflow-hidden aspect-w-1 aspect-h-1">
                             <img class="object-cover w-full h-full transition-all duration-300 group-hover:scale-110" src="./images/<?php echo $fetch_product['image']; ?>">
                             <input type="hidden" name="product_id" value="<?php echo $fetch_product['id']; ?>">
@@ -162,14 +162,14 @@
                         </div>
                         <div class="flex items-start justify-between mt-4 space-x-4">
                             <div>
-                                <h3 class="text-xs font-bold text-gray-900 sm:text-sm md:text-base">
+                                <h3 class="text-xs font-bold text-gray-900 sm:text-sm md:text-base p-4">
                                     <a href="#" title=""><?php echo $fetch_product['name']; ?>
                                         <span class="absolute inset-0" aria-hidden="true"></span>
                                     </a>
                                 </h3>
                             </div>
                             <div class="text-right">
-                                <p class="text-xs font-bold text-gray-900 sm:text-sm md:text-base">Php: <?php echo $fetch_product['price']; ?></p>
+                                <p class="text-xs font-bold text-gray-900 sm:text-sm md:text-base p-4">Php <?php echo $fetch_product['price']; ?></p>
                             </div>
                         </div>
                     </div>
