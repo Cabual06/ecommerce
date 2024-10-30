@@ -10,6 +10,6 @@
 </head>
 <body>
 
-
+    <h1 class="text-center ext-6xl md:text-7xl font-bold mb-5 p-8 border-2 border-black">GALLERY SECTION RESERVE HERE</h1>
 </body>
 </html>

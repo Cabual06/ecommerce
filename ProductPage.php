@@ -100,33 +100,43 @@
       
     </nav>
 
-    <div class="container mx-auto max-w-6xl mb-4">
+    <!-- <div class="container mx-auto max-w-6xl mb-4">
         <button onclick="toggleFilters()" class="px-4 py-2 bg-blue-500 text-white rounded-lg">Show Filters</button>
-    </div>
+    </div> -->
 
 <main class="flex flex-col md:flex-row container mx-auto max-w-6xl">
-  <div id="filters-container" class="space-y-4 p-2 w-full md:max-w-[10rem] hidden">
-    <h3 class="text-xl mb-2">Categories</h3>
-    <br>
-    <div  class="text-xl space-y-2">
-      <div>
-        <input type="checkbox" class="check" id="cameras"/>
-        <label for="sofa">Sofa</label>
-      </div>
-      <div>
-        <input type="checkbox" class="check" id="smartphones" />
-        <label for="bed">Bed</label>
-      </div>
-      <div>
-        <input type="checkbox" class="check" id="games" />
-        <label for="couch">Couch</label>
-      </div>
-      <div>
-        <input type="checkbox" class="check" id="televisions" />
-        <label for="chair">Chair</label>
-      </div>
+
+<div class="container mx-auto max-w-6xl mb-4 relative">
+
+        <button onclick="toggleDropdown()" class="px-4 py-2 bg-blue-500 text-white rounded-lg">
+            Show Filters
+        </button>
+
+        <div id="dropdown-filters" class="hidden absolute bg-white shadow-lg rounded-lg p-4 mt-2 w-58 z-10">
+            <h3 class="text-xl mb-2">Categories</h3>
+            <br>
+            <div class="space-y-2">
+                <div>
+                    <input type="checkbox" class="check" id="sofa" />
+                    <label for="sofa">Sofa</label>
+                </div>
+                <div>
+                    <input type="checkbox" class="check" id="bed" />
+                    <label for="bed">Bed</label>
+                </div>
+                <div>
+                    <input type="checkbox" class="check" id="couch" />
+                    <label for="couch">Couch</label>
+                </div>
+                <div>
+                    <input type="checkbox" class="check" id="chair" />
+                    <label for="chair">Chair</label>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+
+
   <!-- Products wrapper -->
   <div
     id="products-wrapper"
@@ -186,11 +196,11 @@
 </div>
 
 <script>
-    function toggleFilters() {
-        const filtersContainer = document.getElementById('filters-container');
-        filtersContainer.classList.toggle('hidden');
-    }
-</script>
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdown-filters');
+            dropdown.classList.toggle('hidden');
+        }
+    </script>
 
 </section>
 
