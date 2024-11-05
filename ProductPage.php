@@ -1,5 +1,4 @@
 <?php
-
     include 'connection.php';
 
     // Define the number of results per page
@@ -8,11 +7,19 @@
     // Determine the current page number
     $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
 
+    // Search term (if provided)
+    $search = isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : '';
+
     // Calculate the starting limit for the results on the displaying page
     $start_limit = ($page - 1) * $results_per_page;
 
     // Exclude product ID 13 on page 1
-    $product_filter = ($page == 1) ? "WHERE id != 13" : "";
+    $product_filter = "WHERE id != 13";
+    
+    // If a search term is present, add it to the filter
+    if ($search !== '') {
+        $product_filter .= " AND name LIKE '%$search%'";
+    }
 
     // Query to get the total number of products for pagination
     $total_results_query = mysqli_query($conn, "SELECT COUNT(*) AS total FROM `products` $product_filter");
@@ -23,6 +30,7 @@
     $select_products = mysqli_query($conn, "SELECT * FROM `products` $product_filter LIMIT $start_limit, $results_per_page") or die('Query failed');
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -46,6 +54,7 @@
       >
         <!-- Search area -->
         <div class="relative w-full flex items-center gap-4">
+        <form method="GET" action="" class="relative w-full flex items-center gap-4">
             <svg
                 class="text-gray-400"
                 xmlns="http://www.w3.org/2000/svg"
@@ -63,11 +72,15 @@
                 <path d="M21 21l-6 -6" />
             </svg>
             <input
-                type="text"
-                id="search"
-                class="bg-gray-700 rounded-lg p-2 pl-10 transition focus:w-full border-2 border-black"
-                placeholder="Search products..."
+            type="text"
+            name="search"
+            id="search"
+            class="bg-gray-700 rounded-md p-2 pl-10 transition focus:w-full border-2 border-black"
+            placeholder="Search products..."
+            value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>"
             />
+            <button type="submit" class="bg-blue-500 text-white p-2 px-4 rounded-md">Search</button>
+        </form>
         </div>
 
         <!-- Cart icon -->
@@ -146,7 +159,7 @@
 </main>
 
 <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
-    <div class="grid grid-cols-2 gap-8 mt-10 lg:mt-16 lg:gap-12 lg:grid-cols-4">
+    <div class="grid grid-cols-2 gap-8 mt-10 lg:gap-12 lg:grid-cols-4">
         <?php
         if (mysqli_num_rows($select_products) > 0) {
             while ($fetch_product = mysqli_fetch_assoc($select_products)) {
@@ -195,12 +208,22 @@
     </div>
 </div>
 
-<script>
+    <script>
         function toggleDropdown() {
             const dropdown = document.getElementById('dropdown-filters');
             dropdown.classList.toggle('hidden');
         }
     </script>
+
+    <script>
+        const searchInput = document.getElementById('search');
+        searchInput.addEventListener('input', function() {
+            if (searchInput.value === '') {
+                searchInput.form.submit();  // Auto-submit the form when cleared
+            }
+        });
+    </script>
+
 
 </section>
 

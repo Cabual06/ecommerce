@@ -19,7 +19,7 @@
             </svg>
         </div>
         <h3 class="text-3xl font-bold text-gray-600">Safe</h3>
-        <p>Our products are secure and private out-of-the-box</p>
+        <p class="text-gray-600">Our products are secure and private out-of-the-box</p>
     </div>
     <div class="grid gap-4 justify-items-center text-center md:flex-1">
     <div class=" rounded-full border-8 border-gray-500 p-4 ">
@@ -30,7 +30,7 @@
             </svg>
         </div>
         <h3 class="text-3xl font-bold text-gray-600">Fast Delivery</h3>
-        <p>Fast Delivery anytime and anywhere nationwide</p>
+        <p class="text-gray-600">Fast Delivery anytime and anywhere nationwide</p>
     </div>
     <div class="grid gap-4 justify-items-center text-center md:flex-1">
     <div class=" rounded-full border-8 border-gray-500 p-4 ">
@@ -43,7 +43,7 @@
 
         </div>
         <h3 class="text-3xl font-bold text-gray-600">Proven</h3>
-        <p>Leading Furniture World for over 10 years</p>
+        <p class="text-gray-600">Leading Furniture in the World for over 10 years</p>
     </div>
 </div>
 </body>

@@ -29,7 +29,7 @@
               Furniture One
             </h2>
           </a>
-          <p class="mb-4 text-black dark:text-black">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet eos ex dicta quaerat quos tenetur nihil in id. Omnis commodi, doloribus ratione provident.</p>
+          <p class="mb-4 text-gray-600">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet eos ex dicta quaerat quos tenetur nihil in id. Omnis commodi, doloribus ratione provident.</p>
         </div>
       </div>
 
@@ -44,7 +44,7 @@
               Furniture Two
             </h2>
           </a>
-          <p class="mb-4 text-black dark:text-black">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet eos ex dicta quaerat quos tenetur nihil in id. Omnis commodi, doloribus ratione provident.</p>
+          <p class="mb-4 text-gray-600">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet eos ex dicta quaerat quos tenetur nihil in id. Omnis commodi, doloribus ratione provident.</p>
         </div>
       </div>
 
@@ -59,7 +59,7 @@
               Furniture Three
             </h2>
           </a>
-          <p class="mb-4 text-black dark:text-black">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet eos ex dicta quaerat quos tenetur nihil in id. Omnis commodi, doloribus ratione provident.</p>
+          <p class="mb-4 text-gray-600">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet eos ex dicta quaerat quos tenetur nihil in id. Omnis commodi, doloribus ratione provident.</p>
         </div>
       </div>
     </div>
