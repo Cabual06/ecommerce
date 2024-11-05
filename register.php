@@ -12,10 +12,12 @@
         $select_user = mysqli_query($conn, "SELECT * FROM `user` WHERE email = '$email'") or die('Query failed!');
 
         if(mysqli_num_rows($select_user)>0){
-            echo 'user already exist!';
+          $_SESSION['error_message'] = "User alreade exist!";
+            // echo 'user already exist!';
         }else{
-            mysqli_query($conn, "INSERT INTO `user` (`name`, `email`, `password`) VALUES ('$name', '$email', '$password')")or die('Query failed!');         
-            echo 'Successfully signup!';
+            mysqli_query($conn, "INSERT INTO `user` (`name`, `email`, `password`) VALUES ('$name', '$email', '$password')")or die('Query failed!');     
+            $_SESSION['success_message'] = "Signup Successfully!";    
+            // echo 'Successfully signup!';
         }
     }
 
@@ -27,18 +29,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="output.css">
+    <style>
+        /* Optional styles for the alerts */
+        .alert {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .alert-error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
 </head>
 <body>
     <!-- component -->
 <div class="bg-gray-100 flex justify-center items-center h-screen">
+
     <!-- Left: Image -->
 <div class="w-1/2 h-screen hidden lg:block">
   <img src="./images/bg2.jpeg" alt="Placeholder Image" class="object-cover w-full h-full">
 </div>
+
 <!-- Right: Login Form -->
 <div class="lg:p-46 md:p-52 sm:20 p-8 w-full lg:w-1/2">
 
   <h1 class="text-4xl font-semibold mb-8">Signup</h1>
+
+  <?php if(isset($_SESSION['success_message'])): ?>
+    <div class="alert alert-success">
+        <?php 
+            echo $_SESSION['success_message'];
+            unset($_SESSION['success_message']); // Clear message after display
+        ?>
+    </div>
+  <?php elseif(isset($_SESSION['error_message'])): ?>
+    <div class="alert alert-error">
+        <?php 
+            echo $_SESSION['error_message'];
+            unset($_SESSION['error_message']); // Clear message after display
+        ?>
+    </div>
+  <?php endif; ?>
 
   <form action="#" method="POST">
     <!-- Username Input -->
